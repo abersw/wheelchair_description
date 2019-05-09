@@ -76,6 +76,90 @@
 
 
 
+  <link name="left_castor_link">
+    <visual>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <origin rpy="0 1.57075 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="left_castor_link_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_castor_link"/>
+    <origin xyz="0.4 0.22 0"/>
+  </joint>
+
+  <link name="right_castor_link">
+    <visual>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <origin rpy="0 1.57075 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="right_castor_link_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="right_castor_link"/>
+    <origin xyz="0.4 -0.22 0"/>
+  </joint>
+
+
+  <link name="left_castor">
+    <visual>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.06" radius="0.165"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+  <joint name="left_castor_joint" type="continuous">
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <parent link="left_castor_link"/>
+    <child link="left_castor"/>
+    <origin rpy="0 0 0" xyz="0 0 -0.07"/>
+  </joint>
+
+  <link name="right_castor">
+    <visual>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.06" radius="0.165"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+  <joint name="right_castor_joint" type="continuous">
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <parent link="right_castor_link"/>
+    <child link="right_castor"/>
+    <origin rpy="0 0 0" xyz="0 0 -0.07"/>
+  </joint>
+
+
 
 
 
