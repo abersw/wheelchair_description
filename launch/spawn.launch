@@ -1,0 +1,7 @@
+<launch>
+    <param name="wheelchair_description" command="cat '$(find wheelchair_description)/urdf/wheelchair_model.urdf'" />
+    
+    <node name="wheelchair_model_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+          args="-urdf -param wheelchair_description -model wheelchair_model" />
+          
+</launch>
