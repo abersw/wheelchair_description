@@ -4,4 +4,4 @@
     <node name="wheelchair_model_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
           args="-urdf -param wheelchair_description -model wheelchair_model" />
           
-</launch>
+</launch> 
