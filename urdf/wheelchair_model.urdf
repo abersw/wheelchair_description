@@ -159,13 +159,13 @@
     <origin rpy="0 0 0" xyz="0 0 -0.07"/>
   </joint>
 
- <sensor name="stereocamera" update_rate="15">
+ <!--<sensor name="stereocamera" update_rate="15">
    <parent link="base_link"/>
    <origin xyz="0 0 0" rpy="0 0 0"/>
    <camera>
      <image width="640" height="480" hfov="1.5708" format="RGB8" near="0.01" far="50.0"/>
    </camera>
- </sensor>
+ </sensor>-->
 
 
 
@@ -187,11 +187,12 @@
       <wheelDiameter>0.33</wheelDiameter>
       <torque>20</torque>
       <commandTopic>cmd_vel</commandTopic>
-      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <odometryTopic>odom_temp</odometryTopic>
+      <odometryFrame>odom_temp</odometryFrame>
+      <robotBaseFrame>base_link</robotBaseFrame>
       <publishTf>0</publishTf>
     </plugin>
 </gazebo>
-
 
 
 
