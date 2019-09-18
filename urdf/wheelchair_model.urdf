@@ -1,5 +1,56 @@
 <?xml version="1.0"?>
-<robot name="wheelchair_robot">
+<robot name="wheelchair_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+  <link name="world"/>
+
+  <joint name="fixed" type="fixed">
+  	<parent link="world"/>
+  	<child link="base_link"/>
+  </joint>
+
+
+  <gazebo reference="left_wheel_joint">
+  	<material>Gazebo/Red</material>
+  	<mu1>0.2</mu1>
+  	<mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="left_castor_joint">
+  	<material>Gazebo/Red</material>
+  	<mu1>0.2</mu1>
+  	<mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="left_castor_link_joint">
+  	<material>Gazebo/Red</material>
+  	<mu1>0.2</mu1>
+  	<mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="right_wheel_joint">
+  	<material>Gazebo/Red</material>
+  	<mu1>0.2</mu1>
+  	<mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="right_castor_joint">
+  	<material>Gazebo/Red</material>
+  	<mu1>0.2</mu1>
+  	<mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="right_castor_link_joint">
+  	<material>Gazebo/Red</material>
+  	<mu1>0.2</mu1>
+  	<mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="base_link">
+  	<material>Gazebo/Orange</material>
+  	<mu1>0.2</mu1>
+  	<mu2>0.2</mu2>
+  </gazebo>
 
   <material name="blue">
     <color rgba="0 0 0.8 1"/>
@@ -35,6 +86,7 @@
     </collision>
     <inertial>
       <mass value="1"/>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
     </inertial>
   </link>
@@ -63,6 +115,7 @@
     </collision>
     <inertial>
       <mass value="1"/>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
     </inertial>
   </link>
@@ -148,6 +201,7 @@
     </collision>
     <inertial>
       <mass value="1"/>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
     </inertial>
   </link>
@@ -158,6 +212,9 @@
     <child link="right_castor"/>
     <origin rpy="0 0 0" xyz="0 0 -0.07"/>
   </joint>
+
+  
+
 
  <!--<sensor name="stereocamera" update_rate="15">
    <parent link="base_link"/>
