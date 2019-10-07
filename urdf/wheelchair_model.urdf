@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <robot name="wheelchair_robot" xmlns:xacro="http://ros.org/wiki/xacro">
 
+
   <joint name="wheelchair_base_link_left_wheel_joint" type="revolute">
-    <parent link="wheelchair_base_link"/>
+    <parent link="base_link"/>
     <child link="wheelchair_left_wheel_link"/>
     <origin rpy="0 0 0" xyz="0.2473  0.30924 0.5"/>
     <axis xyz="1 0 0"/>
@@ -10,7 +11,7 @@
   </joint>
 
   <joint name="wheelchair_base_link_right_wheel_joint" type="revolute">
-    <parent link="wheelchair_base_link"/>
+    <parent link="base_link"/>
     <child link="wheelchair_right_wheel_link"/>
     <origin rpy="0 0 0" xyz="0.75965 0.30724 0.5"/>
     <axis xyz="1 0 0"/>
@@ -18,7 +19,7 @@
   </joint>
 
   <joint name="wheelchair_base_link_left_castor_joint" type="revolute">
-    <parent link="wheelchair_base_link"/>
+    <parent link="base_link"/>
     <child link="wheelchair_left_castor_link"/>
     <origin rpy="0 0 0" xyz="0.69882 0.88174 0.43379"/>
     <axis xyz="1 0 0"/>
@@ -26,14 +27,14 @@
   </joint>
 
   <joint name="wheelchair_base_link_right_castor_joint" type="revolute">
-    <parent link="wheelchair_base_link"/>
+    <parent link="base_link"/>
     <child link="wheelchair_right_castor_link"/>
     <origin rpy="0 0 0" xyz="0.30213 0.88032 0.43379"/>
     <axis xyz="1 0 0"/>
     <limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>
   </joint>
 
-  <link name="wheelchair_base_link">
+  <link name="base_link">
     <inertial>
       <mass value="1"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -176,29 +177,6 @@
     <material>Gazebo/FlatBlack</material>
   </gazebo>
 
-    <gazebo>
-    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-      <robotNamespace>/WHEELCHAIR</robotNamespace>
-      <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
-      <odometrySource>world</odometrySource>
-      <publishOdomTF>true</publishOdomTF>
-      <robotBaseFrame>wheelchair_base_link</robotBaseFrame>
-      <publishWheelTF>false</publishWheelTF>
-      <publishTf>true</publishTf>
-      <publishWheelJointState>true</publishWheelJointState>
-      <legacyMode>false</legacyMode>
-      <updateRate>30</updateRate>
-      <leftJoint>wheelchair_base_link_left_wheel_joint</leftJoint>
-      <rightJoint>wheelchair_base_link_left_right_joint</rightJoint>
-      <wheelSeparation>0.45</wheelSeparation>
-      <wheelDiameter>0.33</wheelDiameter>
-      <wheelAcceleration>1</wheelAcceleration>
-      <wheelTorque>10</wheelTorque>
-      <rosDebugLevel>na</rosDebugLevel>
-    </plugin>
-  </gazebo>
 
   <transmission name="left_wheel_trans">
       <type>transmission_interface/SimpleTransmission</type>
@@ -223,7 +201,37 @@
     </transmission>
 
 
+  <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <robotNamespace>/WHEELCHAIR</robotNamespace>
+      <rosDebugLevel>Debug</rosDebugLevel>
+      <publishWheelTF>false</publishWheelTF>
+      <robotNamespace>/</robotNamespace>
+      <publishTf>1</publishTf>
+      <publishWheelJointState>false</publishWheelJointState>
+      <alwaysOn>true</alwaysOn>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <publishTf>true</publishTf>
+      <broadcastTF>1</broadcastTF>
 
+      <publishWheelJointState>true</publishWheelJointState>
+      <legacyMode>false</legacyMode>
+      <updateRate>30</updateRate>
+      <leftJoint>wheelchair_base_link_left_wheel_joint</leftJoint>
+      <rightJoint>wheelchair_base_link_left_wheel_joint</rightJoint>
+      <wheelSeparation>0.45</wheelSeparation>
+      <wheelDiameter>0.33</wheelDiameter>
+      <wheelAcceleration>1</wheelAcceleration>
+      <wheelTorque>10</wheelTorque>
+      <rosDebugLevel>na</rosDebugLevel>
+
+      <wheelTorque>30</wheelTorque>
+      <wheelAcceleration>1.8</wheelAcceleration>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryFrame>odom</odometryFrame> 
+      <odometryTopic>odom</odometryTopic> 
+    </plugin>
+  </gazebo>
 
 
 
