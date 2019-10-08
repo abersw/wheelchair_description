@@ -2,36 +2,36 @@
 <robot name="wheelchair_robot" xmlns:xacro="http://ros.org/wiki/xacro">
 
 
-  <joint name="wheelchair_base_link_left_wheel_joint" type="revolute">
+  <joint name="wheelchair_base_link_left_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="wheelchair_left_wheel_link"/>
     <origin rpy="0 0 0" xyz="0.2473  0.30924 0.5"/>
     <axis xyz="1 0 0"/>
-    <limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>
+    <!--<limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>-->
   </joint>
 
-  <joint name="wheelchair_base_link_right_wheel_joint" type="revolute">
+  <joint name="wheelchair_base_link_right_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="wheelchair_right_wheel_link"/>
     <origin rpy="0 0 0" xyz="0.75965 0.30724 0.5"/>
     <axis xyz="1 0 0"/>
-    <limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>
+    <!--<limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>-->
   </joint>
 
-  <joint name="wheelchair_base_link_left_castor_joint" type="revolute">
+  <joint name="wheelchair_base_link_left_castor_joint" type="continuous">
     <parent link="base_link"/>
     <child link="wheelchair_left_castor_link"/>
     <origin rpy="0 0 0" xyz="0.69882 0.88174 0.43379"/>
     <axis xyz="1 0 0"/>
-    <limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>
+    <!--<limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>-->
   </joint>
 
-  <joint name="wheelchair_base_link_right_castor_joint" type="revolute">
+  <joint name="wheelchair_base_link_right_castor_joint" type="continuous">
     <parent link="base_link"/>
     <child link="wheelchair_right_castor_link"/>
     <origin rpy="0 0 0" xyz="0.30213 0.88032 0.43379"/>
     <axis xyz="1 0 0"/>
-    <limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>
+    <!--<limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>-->
   </joint>
 
   <link name="base_link">
@@ -47,7 +47,7 @@
       </geometry>
     </collision>
     <visual name="wheelchair_base__visual">
-      <origin rpy="0 0 0" xyz="0.50222 0.51562 0.5"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <box size="0.45 0.8 0.2"/>
       </geometry>
