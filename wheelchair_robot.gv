@@ -1,0 +1,17 @@
+digraph G {
+node [shape=box];
+"wheelchair_base_link" [label="wheelchair_base_link"];
+"wheelchair_left_castor_link" [label="wheelchair_left_castor_link"];
+"wheelchair_left_wheel_link" [label="wheelchair_left_wheel_link"];
+"wheelchair_right_castor_link" [label="wheelchair_right_castor_link"];
+"wheelchair_right_wheel_link" [label="wheelchair_right_wheel_link"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"wheelchair_base_link" -> "wheelchair_base_link_left_castor_joint" [label="xyz: 0.69882 0.88174 0.43379 \nrpy: 0 -0 0"]
+"wheelchair_base_link_left_castor_joint" -> "wheelchair_left_castor_link"
+"wheelchair_base_link" -> "wheelchair_base_link_left_wheel_joint" [label="xyz: 0.2473 0.30924 0.5 \nrpy: 0 -0 0"]
+"wheelchair_base_link_left_wheel_joint" -> "wheelchair_left_wheel_link"
+"wheelchair_base_link" -> "wheelchair_base_link_right_castor_joint" [label="xyz: 0.30213 0.88032 0.43379 \nrpy: 0 -0 0"]
+"wheelchair_base_link_right_castor_joint" -> "wheelchair_right_castor_link"
+"wheelchair_base_link" -> "wheelchair_base_link_right_wheel_joint" [label="xyz: 0.75965 0.30724 0.5 \nrpy: 0 -0 0"]
+"wheelchair_base_link_right_wheel_joint" -> "wheelchair_right_wheel_link"
+}

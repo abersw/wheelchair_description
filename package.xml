@@ -8,13 +8,27 @@
   <maintainer email="tof7@aber.ac.uk">Tomos Fearn</maintainer>
 
   <license>BSD</license>
-  <url>http://ros.org/wiki/urdf_tutorial</url>
+  <url>https://gitlab.dcs.aber.ac.uk/tof7-ros/wheelchair_description</url>
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roslaunch</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>rviz</build_depend>
+  <build_depend>xacro</build_depend>
+  <build_depend>urdf</build_depend>
+  <build_depend>tf2</build_depend>
   <run_depend>joint_state_publisher</run_depend>
   <run_depend>robot_state_publisher</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
   <run_depend>rviz</run_depend>
   <run_depend>xacro</run_depend>
+  <run_depend>urdf</run_depend>
+  <run_depend>tf2</run_depend>
 
 </package>
