@@ -47,7 +47,7 @@
       </geometry>
     </collision>
     <visual name="wheelchair_base__visual">
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="0.50222 0.51562 0.5"/>
       <geometry>
         <box size="0.45 0.8 0.2"/>
       </geometry>
