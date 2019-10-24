@@ -151,12 +151,12 @@
   <joint name="scan_joint" type="fixed">
     <parent link="base_link"/>
     <child link="front_scan"/>
-    <origin xyz="0 -0.35 0.1" rpy="4.7121 3.1414 4.7121"/>
+    <origin xyz="0 -0.35 0.15" rpy="0 0 0"/>
   </joint>
 
   <link name="front_scan">
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="-0.075 0 0" rpy="4.7121 3.1414 4.7121"/>
       <geometry>
         <mesh filename="package://wheelchair_description/meshes/rplidar-a2m4-r1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -268,6 +268,39 @@
       <wheelTorque>100</wheelTorque>
       <rosDebugLevel>na</rosDebugLevel>
     </plugin>
+  </gazebo>
+
+  <gazebo reference="front_scan">
+    <material>Gazebo/FlatBlack</material>
+    <sensor type="ray" name="lds_lfcd_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>5</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>0.0</min_angle>
+            <max_angle>6.28319</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.120</min>
+          <max>3.5</max>
+          <resolution>0.015</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
+        <topicName>scan</topicName>
+        <frameName>front_scan</frameName>
+      </plugin>
+    </sensor>
   </gazebo>
 
 
