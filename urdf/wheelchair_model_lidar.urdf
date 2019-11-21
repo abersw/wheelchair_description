@@ -151,13 +151,13 @@
   <joint name="leftscan_joint" type="fixed">
     <parent link="base_link"/>
     <child link="left_scan"/>
-    <origin xyz="0.2 -0.35 0.15" rpy="0 0 0"/>
+    <origin xyz="0.2 -0.35 0.15" rpy="0.1 0.5 0"/>
   </joint>
 
   <joint name="rightscan_joint" type="fixed">
     <parent link="base_link"/>
     <child link="right_scan"/>
-    <origin xyz="-0.2 -0.35 0.15" rpy="-4 0 0"/><!--this tag changes the rpy of lidar-->
+    <origin xyz="-0.2 -0.35 0.15" rpy="0.1 -0.5 0"/><!--this tag changes the rpy of lidar-->
   </joint>
 
   <link name="left_scan">
@@ -305,7 +305,7 @@
 
   <gazebo reference="left_scan">
     <material>Gazebo/FlatBlack</material>
-    <sensor type="ray" name="lds_lfcd_sensor">
+    <sensor type="ray" name="left_lidar">
       <pose>0 0 0 0 0 0</pose>
       <visualize>true</visualize>
       <update_rate>5</update_rate>
@@ -329,7 +329,7 @@
           <stddev>0.01</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
+      <plugin name="gazebo_ros_left_lidar_controller" filename="libgazebo_ros_laser.so">
         <topicName>scan_left</topicName>
         <frameName>left_scan</frameName>
       </plugin>
@@ -338,7 +338,7 @@
 
   <gazebo reference="right_scan">
     <material>Gazebo/FlatBlack</material>
-    <sensor type="ray" name="lds_lfcd_sensor">
+    <sensor type="ray" name="right_lidar">
       <pose>0 0 0 0 0 0</pose>
       <visualize>true</visualize>
       <update_rate>5</update_rate>
@@ -362,7 +362,7 @@
           <stddev>0.01</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
+      <plugin name="gazebo_ros_right_lidar_controller" filename="libgazebo_ros_laser.so">
         <topicName>scan_right</topicName>
         <frameName>right_scan</frameName>
       </plugin>
