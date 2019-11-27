@@ -148,14 +148,47 @@
     </visual>
   </link>
 
-  <joint name="scan_joint" type="fixed">
+  <joint name="leftscan_joint" type="fixed">
     <parent link="base_link"/>
-    <child link="front_scan"/>
-    <origin xyz="0 -0.35 0.15" rpy="0 0 0"/>
+    <child link="left_scan"/>
+    <origin xyz="0.2 -0.35 0.15" rpy="0.1 0.5 0"/>
   </joint>
 
-  <link name="front_scan">
+  <joint name="rightscan_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="right_scan"/>
+    <origin xyz="-0.2 -0.35 0.15" rpy="0.1 -0.5 0"/><!--this tag changes the rpy of lidar-->
+  </joint>
+
+  <link name="left_scan">
     <visual>
+      <!--<origin xyz="-0.075 0 0" rpy="4.7121 3.1414 4.7121"/>-->
+      <origin xyz="-0.075 0 0" rpy="4.7121 3.1414 4.7121"/>
+      <geometry>
+        <mesh filename="package://wheelchair_description/meshes/rplidar-a2m4-r1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="4.7121 3.1414 4.7121"/>
+      <geometry>
+        <cylinder length="0.0315" radius="0.055"/>
+      </geometry>
+    </collision>
+
+    <!--<inertial>
+      <mass value="0.114" />
+      <origin xyz="0 0 1.5707" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+               iyy="0.001" iyz="0.0"
+               izz="0.001" />
+    </inertial>-->
+  </link>
+
+  <link name="right_scan">
+    <visual>
+      <!--<origin xyz="-0.075 0 0" rpy="4.7121 3.1414 4.7121"/>-->
       <origin xyz="-0.075 0 0" rpy="4.7121 3.1414 4.7121"/>
       <geometry>
         <mesh filename="package://wheelchair_description/meshes/rplidar-a2m4-r1.stl" scale="0.001 0.001 0.001"/>
@@ -270,9 +303,9 @@
     </plugin>
   </gazebo>
 
-  <!--<gazebo reference="front_scan">
+  <gazebo reference="left_scan">
     <material>Gazebo/FlatBlack</material>
-    <sensor type="ray" name="lds_lfcd_sensor">
+    <sensor type="ray" name="left_lidar">
       <pose>0 0 0 0 0 0</pose>
       <visualize>true</visualize>
       <update_rate>5</update_rate>
@@ -286,8 +319,8 @@
           </horizontal>
         </scan>
         <range>
-          <min>0.120</min>
-          <max>3.5</max>
+          <min>0.15</min>
+          <max>5</max>
           <resolution>0.015</resolution>
         </range>
         <noise>
@@ -296,12 +329,45 @@
           <stddev>0.01</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
-        <topicName>scan</topicName>
-        <frameName>front_scan</frameName>
+      <plugin name="gazebo_ros_left_lidar_controller" filename="libgazebo_ros_laser.so">
+        <topicName>scan_left</topicName>
+        <frameName>left_scan</frameName>
       </plugin>
     </sensor>
-  </gazebo>-->
+  </gazebo>
+
+  <gazebo reference="right_scan">
+    <material>Gazebo/FlatBlack</material>
+    <sensor type="ray" name="right_lidar">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>5</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>0.0</min_angle>
+            <max_angle>6.28319</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.15</min>
+          <max>5</max>
+          <resolution>0.015</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_right_lidar_controller" filename="libgazebo_ros_laser.so">
+        <topicName>scan_right</topicName>
+        <frameName>right_scan</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
 
 
  <!-- <gazebo>
@@ -365,51 +431,51 @@
   <link name="world"/>
 
   <joint name="fixed" type="fixed">
-  	<parent link="world"/>
-  	<child link="base_link"/>
+    <parent link="world"/>
+    <child link="base_link"/>
   </joint>
 
 
   <gazebo reference="left_wheel_joint">
-  	<material>Gazebo/Red</material>
-  	<mu1>0.2</mu1>
-  	<mu2>0.2</mu2>
+    <material>Gazebo/Red</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
   </gazebo>
 
   <gazebo reference="left_castor_joint">
-  	<material>Gazebo/Red</material>
-  	<mu1>0.2</mu1>
-  	<mu2>0.2</mu2>
+    <material>Gazebo/Red</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
   </gazebo>
 
   <gazebo reference="left_castor_link_joint">
-  	<material>Gazebo/Red</material>
-  	<mu1>0.2</mu1>
-  	<mu2>0.2</mu2>
+    <material>Gazebo/Red</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
   </gazebo>
 
   <gazebo reference="right_wheel_joint">
-  	<material>Gazebo/Red</material>
-  	<mu1>0.2</mu1>
-  	<mu2>0.2</mu2>
+    <material>Gazebo/Red</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
   </gazebo>
 
   <gazebo reference="right_castor_joint">
-  	<material>Gazebo/Red</material>
-  	<mu1>0.2</mu1>
-  	<mu2>0.2</mu2>
+    <material>Gazebo/Red</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
   </gazebo>
 
   <gazebo reference="right_castor_link_joint">
-  	<material>Gazebo/Red</material>
-  	<mu1>0.2</mu1>
-  	<mu2>0.2</mu2>
+    <material>Gazebo/Red</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
   </gazebo>
 
   <gazebo reference="base_link">
-  	<material>Gazebo/Orange</material>
-  	<mu1>0.2</mu1>
-  	<mu2>0.2</mu2>
+    <material>Gazebo/Orange</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
   </gazebo>
 
   <material name="blue">
