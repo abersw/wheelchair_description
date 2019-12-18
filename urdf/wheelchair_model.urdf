@@ -12,6 +12,7 @@
     <child link="wheelchair_left_wheel_link"/>
     <origin rpy="0 0 0" xyz="0.25  0.2 0"/> <!-- xyz settings now correct -->
     <axis xyz="1 0 0"/>
+    <limit effort="100" velocity="100"/> <!-- it was this thing all along! The great brain meltdown of 04-10/12/2019 -->
     <!--<limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>-->
   </joint>
 
@@ -20,6 +21,7 @@
     <child link="wheelchair_right_wheel_link"/>
     <origin rpy="0 0 0" xyz="-0.25 0.2 0"/>
     <axis xyz="1 0 0"/>
+    <limit effort="100" velocity="100"/>
     <!--<limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>-->
   </joint>
 
@@ -150,11 +152,11 @@
 
   <joint name="scan_joint" type="fixed">
     <parent link="base_link"/>
-    <child link="front_scan"/>
+    <child link="laser"/>
     <origin xyz="0 -0.35 0.15" rpy="0 0 0"/>
   </joint>
 
-  <link name="front_scan">
+  <link name="laser">
     <visual>
       <origin xyz="-0.075 0 0" rpy="4.7121 3.1414 4.7121"/>
       <geometry>
@@ -178,6 +180,64 @@
                izz="0.001" />
     </inertial>-->
   </link>
+
+
+  <!-- Camera Center -->
+    <joint name="zed_camera_center_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="zed_camera_center"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+    <link name="zed_camera_center">
+        <visual>
+            <origin xyz="0 0 0.25" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/ZED.stl" />
+            </geometry>
+            <material name="light_grey">
+                <color rgba="0.8 0.8 0.8 0.8"/>
+            </material>
+        </visual>
+    </link>
+
+<!-- Left Camera -->
+
+    <joint name="zed_left_camera_joint" type="fixed">
+        <parent link="zed_camera_center"/>
+        <child link="zed_left_camera_frame"/>
+        <origin xyz="0 0.06 0" rpy="0 0 0" />
+    </joint>
+
+    <link name="zed_left_camera_frame" />
+
+    <joint name="zed_left_camera_optical_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="-1.57079632679 0.0 -1.57079632679"/>
+        <parent link="zed_left_camera_frame"/>
+        <child link="zed_left_camera_optical_frame"/>
+    </joint>
+
+    <link name="zed_left_camera_optical_frame"/>
+
+<!-- Right Camera -->
+
+    <joint name="zed_right_camera_joint" type="fixed">
+        <parent link="zed_camera_center"/>
+        <child link="zed_right_camera_frame"/>
+        <origin xyz="0 -0.06 0" rpy="0 0 0" />
+    </joint>
+
+    <link name="zed_right_camera_frame" />
+
+    <joint name="zed_right_camera_optical_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="-1.57079632679 0.0 -1.57079632679"/>
+        <parent link="zed_right_camera_frame"/>
+        <child link="zed_right_camera_optical_frame"/>
+    </joint>
+
+    <link name="zed_right_camera_optical_frame"/>
+
+
 
 
   <gazebo reference="wheelchair_left_wheel_link">
@@ -270,12 +330,12 @@
     </plugin>
   </gazebo>
 
-  <gazebo reference="front_scan">
+  <gazebo reference="laser">
     <material>Gazebo/FlatBlack</material>
     <sensor type="ray" name="lds_lfcd_sensor">
       <pose>0 0 0 0 0 0</pose>
       <visualize>true</visualize>
-      <update_rate>5</update_rate>
+      <update_rate>50</update_rate>
       <ray>
         <scan>
           <horizontal>
@@ -287,7 +347,7 @@
         </scan>
         <range>
           <min>0.120</min>
-          <max>3.5</max>
+          <max>12</max>
           <resolution>0.015</resolution>
         </range>
         <noise>
@@ -298,7 +358,7 @@
       </ray>
       <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
         <topicName>scan</topicName>
-        <frameName>front_scan</frameName>
+        <frameName>laser</frameName>
       </plugin>
     </sensor>
   </gazebo>
