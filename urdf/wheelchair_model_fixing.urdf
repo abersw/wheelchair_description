@@ -10,8 +10,8 @@
   <joint name="wheelchair_base_link_left_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="wheelchair_left_wheel_link"/>
-    <origin rpy="0 0 0" xyz="0.25  0.2 0"/> <!-- xyz settings now correct -->
-    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="-0.2  0.25 0"/> <!-- xyz settings now correct -->
+    <axis xyz="0 1 0"/>
     <limit effort="100" velocity="100"/> <!-- it was this thing all along! The great brain meltdown of 04-10/12/2019 -->
     <!--<limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>-->
   </joint>
@@ -19,8 +19,8 @@
   <joint name="wheelchair_base_link_right_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="wheelchair_right_wheel_link"/>
-    <origin rpy="0 0 0" xyz="-0.25 0.2 0"/>
-    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="-0.2 -0.25 0"/>
+    <axis xyz="0 1 0"/>
     <limit effort="100" velocity="100"/>
     <!--<limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>-->
   </joint>
@@ -28,16 +28,16 @@
   <joint name="wheelchair_base_link_left_castor_joint" type="fixed">
     <parent link="base_link"/>
     <child link="wheelchair_left_castor_link"/>
-    <origin rpy="0 0 0" xyz="0.2 -0.4 -0.07"/>
-    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0.4 0.2 -0.07"/>
+    <axis xyz="1 1 0"/>
     <!--<limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>-->
   </joint>
 
   <joint name="wheelchair_base_link_right_castor_joint" type="fixed">
     <parent link="base_link"/>
     <child link="wheelchair_right_castor_link"/>
-    <origin rpy="0 0 0" xyz="-0.2 -0.4 -0.07"/>
-    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0.4 -0.2 -0.07"/>
+    <axis xyz="1 1 0"/>
     <!--<limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>-->
   </joint>
 
@@ -59,13 +59,13 @@
     <collision name="wheelchair_base__collision">
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0.45 0.8 0.2"/>
+        <box size="0.8 0.45 0.2"/>
       </geometry>
     </collision>
     <visual name="wheelchair_base__visual">
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0.45 0.8 0.2"/>
+        <box size="0.8 0.45 0.2"/>
       </geometry>
     </visual>
   </link>
@@ -73,17 +73,17 @@
   <link name="wheelchair_left_wheel_link">
     <inertial>
       <mass value="20"/>
-      <origin rpy="1.5707 0     0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <inertia ixx="0.145833" ixy="0" ixz="0" iyy="0.145833" iyz="0" izz="0.125"/>
     </inertial>
     <collision name="wheelchair_base__collision">
-      <origin rpy="1.5707 0     1.5707" xyz="0 0 0"/>
+      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
       <geometry>
         <cylinder length="0.06" radius="0.165"/>
       </geometry>
     </collision>
     <visual name="wheelchair_base__visual">
-      <origin rpy="1.5707 0     1.5707" xyz="0 0 0"/>
+      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
       <geometry>
         <cylinder length="0.06" radius="0.165"/>
       </geometry>
@@ -93,17 +93,17 @@
   <link name="wheelchair_right_wheel_link">
     <inertial>
       <mass value="20"/>
-      <origin rpy="1.5707 0     0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <inertia ixx="0.145833" ixy="0" ixz="0" iyy="0.145833" iyz="0" izz="0.125"/>
     </inertial>
     <collision name="wheelchair_base__collision">
-      <origin rpy="1.5707 0     1.5707" xyz="0 0 0"/>
+      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
       <geometry>
         <cylinder length="0.06" radius="0.165"/>
       </geometry>
     </collision>
     <visual name="wheelchair_base__visual">
-      <origin rpy="1.5707 0     1.5707" xyz="0 0 0"/>
+      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
       <geometry>
         <cylinder length="0.06" radius="0.165"/>
       </geometry>
@@ -153,12 +153,12 @@
   <joint name="scan_joint" type="fixed">
     <parent link="base_link"/>
     <child link="laser"/>
-    <origin xyz="0 -0.35 0.15" rpy="0 0 0"/>
+    <origin xyz="0.35 0 0.15" rpy="0 0 0"/>
   </joint>
 
   <link name="laser">
     <visual>
-      <origin xyz="-0.075 0 0" rpy="4.7121 3.1414 4.7121"/>
+      <origin xyz="0 0 0" rpy="4.7121 3.1414 1.5707"/>
       <geometry>
         <mesh filename="package://wheelchair_description/meshes/rplidar-a2m4-r1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -166,7 +166,8 @@
     </visual>
 
     <collision>
-      <origin xyz="0 0 0" rpy="4.7121 3.1414 4.7121"/>
+      <!--<origin xyz="0 0 0" rpy="4.7121 3.1414 4.7121"/>-->
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <cylinder length="0.0315" radius="0.055"/>
       </geometry>
