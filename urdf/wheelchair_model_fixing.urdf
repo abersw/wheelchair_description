@@ -10,8 +10,8 @@
   <joint name="wheelchair_base_link_left_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="wheelchair_left_wheel_link"/>
-    <origin rpy="0 0 0" xyz="0.25  0.2 0"/> <!-- xyz settings now correct -->
-    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="-0.2  0.25 0"/> <!-- xyz settings now correct -->
+    <axis xyz="0 1 0"/>
     <limit effort="100" velocity="100"/> <!-- it was this thing all along! The great brain meltdown of 04-10/12/2019 -->
     <!--<limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>-->
   </joint>
@@ -19,8 +19,8 @@
   <joint name="wheelchair_base_link_right_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="wheelchair_right_wheel_link"/>
-    <origin rpy="0 0 0" xyz="-0.25 0.2 0"/>
-    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="-0.2 -0.25 0"/>
+    <axis xyz="0 1 0"/>
     <limit effort="100" velocity="100"/>
     <!--<limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>-->
   </joint>
@@ -28,16 +28,16 @@
   <joint name="wheelchair_base_link_left_castor_joint" type="fixed">
     <parent link="base_link"/>
     <child link="wheelchair_left_castor_link"/>
-    <origin rpy="0 0 0" xyz="0.2 -0.4 -0.07"/>
-    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0.4 0.2 -0.07"/>
+    <axis xyz="1 1 0"/>
     <!--<limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>-->
   </joint>
 
   <joint name="wheelchair_base_link_right_castor_joint" type="fixed">
     <parent link="base_link"/>
     <child link="wheelchair_right_castor_link"/>
-    <origin rpy="0 0 0" xyz="-0.2 -0.4 -0.07"/>
-    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0.4 -0.2 -0.07"/>
+    <axis xyz="1 1 0"/>
     <!--<limit effort="-1.0" lower="-1.79769e+308" upper="1.79769e+308" velocity="-1.0"/>-->
   </joint>
 
@@ -59,13 +59,13 @@
     <collision name="wheelchair_base__collision">
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0.45 0.8 0.2"/>
+        <box size="0.8 0.45 0.2"/>
       </geometry>
     </collision>
     <visual name="wheelchair_base__visual">
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0.45 0.8 0.2"/>
+        <box size="0.8 0.45 0.2"/>
       </geometry>
     </visual>
   </link>
@@ -73,17 +73,17 @@
   <link name="wheelchair_left_wheel_link">
     <inertial>
       <mass value="20"/>
-      <origin rpy="1.5707 0     0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <inertia ixx="0.145833" ixy="0" ixz="0" iyy="0.145833" iyz="0" izz="0.125"/>
     </inertial>
     <collision name="wheelchair_base__collision">
-      <origin rpy="1.5707 0     1.5707" xyz="0 0 0"/>
+      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
       <geometry>
         <cylinder length="0.06" radius="0.165"/>
       </geometry>
     </collision>
     <visual name="wheelchair_base__visual">
-      <origin rpy="1.5707 0     1.5707" xyz="0 0 0"/>
+      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
       <geometry>
         <cylinder length="0.06" radius="0.165"/>
       </geometry>
@@ -93,17 +93,17 @@
   <link name="wheelchair_right_wheel_link">
     <inertial>
       <mass value="20"/>
-      <origin rpy="1.5707 0     0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <inertia ixx="0.145833" ixy="0" ixz="0" iyy="0.145833" iyz="0" izz="0.125"/>
     </inertial>
     <collision name="wheelchair_base__collision">
-      <origin rpy="1.5707 0     1.5707" xyz="0 0 0"/>
+      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
       <geometry>
         <cylinder length="0.06" radius="0.165"/>
       </geometry>
     </collision>
     <visual name="wheelchair_base__visual">
-      <origin rpy="1.5707 0     1.5707" xyz="0 0 0"/>
+      <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
       <geometry>
         <cylinder length="0.06" radius="0.165"/>
       </geometry>
@@ -153,12 +153,12 @@
   <joint name="scan_joint" type="fixed">
     <parent link="base_link"/>
     <child link="laser"/>
-    <origin xyz="0 -0.35 0.15" rpy="0 0 0"/>
+    <origin xyz="0.35 0 0.15" rpy="0 0 0"/>
   </joint>
 
   <link name="laser">
     <visual>
-      <origin xyz="-0.075 0 0" rpy="4.7121 3.1414 4.7121"/>
+      <origin xyz="0 0 0" rpy="4.7121 3.1414 1.5707"/>
       <geometry>
         <mesh filename="package://wheelchair_description/meshes/rplidar-a2m4-r1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -166,7 +166,8 @@
     </visual>
 
     <collision>
-      <origin xyz="0 0 0" rpy="4.7121 3.1414 4.7121"/>
+      <!--<origin xyz="0 0 0" rpy="4.7121 3.1414 4.7121"/>-->
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <cylinder length="0.0315" radius="0.055"/>
       </geometry>
@@ -181,6 +182,29 @@
     </inertial>-->
   </link>
 
+  <link name="imu">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.03 0.02 0.01"/>
+        </geometry>
+      </visual>
+    
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.03 0.02 0.01"/>
+          </geometry>
+      </collision>
+    </link>
+    
+    <joint name="imu_joint" type="fixed">
+      <axis xyz="1 0 0"/>      
+      <origin xyz="0 0 0.105"/>
+      <parent link="base_link"/>
+      <child link="imu"/>
+    </joint>
+
 
   <!-- Camera Center -->
     <joint name="zed_camera_center_joint" type="fixed">
@@ -191,7 +215,7 @@
 
     <link name="zed_camera_center">
         <visual>
-            <origin xyz="0 0 0.25" rpy="0 0 0"/>
+            <origin xyz="0 0 0.45" rpy="0 0 0"/>
             <geometry>
                 <mesh filename="package://wheelchair_description/meshes/ZED.stl" />
             </geometry>
@@ -236,6 +260,87 @@
     </joint>
 
     <link name="zed_right_camera_optical_frame"/>
+
+
+  <gazebo reference="zed_left_camera_frame">
+    <sensor type="camera" name="left_camera">
+      <update_rate>30.0</update_rate>
+      <camera name="leftcamera">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>1920</width>
+          <height>1080</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame.
+               That pixel's noise value is added to each of its color
+               channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>wheelchair_robot/left_camera</cameraName>
+        <imageTopicName>left_camera/image_raw</imageTopicName>
+        <cameraInfoTopicName>left_camera/camera_info</cameraInfoTopicName>
+        <frameName>zed_left_camera_frame</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+    <gazebo reference="zed_right_camera_frame">
+    <sensor type="camera" name="right_camera">
+      <update_rate>30.0</update_rate>
+      <camera name="rightcamera">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>1920</width>
+          <height>1080</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame.
+               That pixel's noise value is added to each of its color
+               channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>wheelchair_robot/right_camera</cameraName>
+        <imageTopicName>right_camera/image_raw</imageTopicName>
+        <cameraInfoTopicName>right_camera/camera_info</cameraInfoTopicName>
+        <frameName>zed_right_camera_frame</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
 
 
 
@@ -362,6 +467,48 @@
       </plugin>
     </sensor>
   </gazebo>
+
+
+  <gazebo reference="imu">
+        <gravity>true</gravity>
+        <sensor name='imu_sensor' type='imu'>
+            <always_on>1</always_on>
+            <update_rate>100</update_rate>
+            <visualize>1</visualize>
+            <topic>imu_data</topic>
+            <plugin name='imu_plugin' filename='libgazebo_ros_imu_sensor.so'>
+                <topicName>imu_data</topicName>
+                <bodyName>imu</bodyName>
+                <updateRateHZ>10.0</updateRateHZ>
+                <gaussianNoise>0.0</gaussianNoise>
+                <xyzOffset>0 0 0</xyzOffset>
+                <rpyOffset>0 0 0</rpyOffset>
+                <frameName>imu</frameName>
+            </plugin>
+            <pose>0 0 0 0 0 0</pose>
+        </sensor>
+    </gazebo>
+
+<!--
+  <gazebo reference="imu">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>__default_topic__</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>wheelchair_robot/imu</topicName>
+        <bodyName>imu</bodyName>
+        <updateRateHZ>10.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>imu</frameName>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>-->
 
 
  <!-- <gazebo>
