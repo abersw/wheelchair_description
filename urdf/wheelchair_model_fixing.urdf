@@ -210,12 +210,12 @@
     <joint name="zed_camera_center_joint" type="fixed">
         <parent link="base_link"/>
         <child link="zed_camera_center"/>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0.45" rpy="0 0 0" />
     </joint>
 
     <link name="zed_camera_center">
         <visual>
-            <origin xyz="0 0 0.45" rpy="0 0 0"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
                 <mesh filename="package://wheelchair_description/meshes/ZED.stl" />
             </geometry>
