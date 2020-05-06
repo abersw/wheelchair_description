@@ -297,6 +297,14 @@
 
     <link name="zed_left_camera_optical_frame"/>
 
+    <joint name="zed_left_camera_stereo_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="zed_left_camera_frame"/>
+        <child link="zed_left_camera_stereo_frame"/>
+    </joint>
+
+    <link name="zed_left_camera_stereo_frame"/>
+
 <!-- Right Camera -->
 
     <joint name="zed_right_camera_joint" type="fixed">
@@ -316,7 +324,7 @@
     <link name="zed_right_camera_optical_frame"/>
 
 
-  <gazebo reference="zed_camera_center">
+  <gazebo reference="zed_left_camera_stereo_frame">
     <sensor type="depth" name="depth_camera">
       <update_rate>30.0</update_rate>
       <camera name="depth_camera">
@@ -343,13 +351,13 @@
       <baseline>0.2</baseline>
       <alwaysOn>true</alwaysOn>
       <updateRate>1.0</updateRate>
-      <cameraName>depth_camera</cameraName>
-      <imageTopicName>/wheelchair_robot/depth_camera/color/image_raw</imageTopicName>
-      <cameraInfoTopicName>/wheelchair_robot/depth_camera/color/camera_info</cameraInfoTopicName>
-      <depthImageTopicName>/wheelchair_robot/depth_camera/depth/image_raw</depthImageTopicName>
-      <depthImageInfoTopicName>/wheelchair_robot/depth_camera/depth/camera_info</depthImageInfoTopicName>
-      <pointCloudTopicName>/wheelchair_robot/depth_camera/depth/points</pointCloudTopicName>
-      <frameName>zed_camera_center</frameName>
+      <cameraName>wheelchair_robot/depth_camera</cameraName>
+      <imageTopicName>color/image_raw</imageTopicName>
+      <cameraInfoTopicName>color/camera_info</cameraInfoTopicName>
+      <depthImageTopicName>depth/image_raw</depthImageTopicName>
+      <depthImageInfoTopicName>depth/camera_info</depthImageInfoTopicName>
+      <pointCloudTopicName>depth/points</pointCloudTopicName>
+      <frameName>zed_left_camera_stereo_frame</frameName>
       <pointCloudCutoff>0.5</pointCloudCutoff>
       <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
       <distortionK1>0.00000001</distortionK1>

@@ -6434,15 +6434,15 @@
       <pose frame=''>-0.402758 1.14989 0 0 -0 0</pose>
     </model>
     <state world_name='default'>
-      <sim_time>335 272000000</sim_time>
-      <real_time>123 620508185</real_time>
-      <wall_time>1580247498 376177118</wall_time>
-      <iterations>118500</iterations>
+      <sim_time>420 515000000</sim_time>
+      <real_time>87 606771289</real_time>
+      <wall_time>1588683180 721954639</wall_time>
+      <iterations>85243</iterations>
       <model name='beer'>
-        <pose frame=''>-0.402758 1.14989 -8e-06 -4e-06 2e-06 0</pose>
+        <pose frame=''>-0.402758 1.14989 -2e-06 4e-06 -1e-06 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>-0.402758 1.14989 0.114992 -4e-06 2e-06 0</pose>
+          <pose frame=''>-0.402758 1.14989 0.114998 4e-06 -1e-06 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 -9.8 0 -0 0</acceleration>
           <wrench>0 0 -3.822 0 -0 0</wrench>
@@ -6459,13 +6459,13 @@
         </link>
       </model>
       <model name='person_walking'>
-        <pose frame=''>-0.577062 2.08666 -1e-06 2e-06 -0 0.000113</pose>
+        <pose frame=''>-0.577062 2.08666 -1e-06 -2e-06 0 0.000113</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>-0.577062 2.08666 -1e-06 2e-06 -0 0.000113</pose>
+          <pose frame=''>-0.577062 2.08666 -1e-06 -2e-06 0 0.000113</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-0.016267 -2.16444 -2.20391 2.27838 -0.011594 -0.012691</acceleration>
-          <wrench>-1.30133 -173.155 -176.313 0 -0 0</wrench>
+          <acceleration>0.016266 2.16444 -2.20391 -2.27838 0.011593 -0.012691</acceleration>
+          <wrench>1.30125 173.155 -176.313 0 -0 0</wrench>
         </link>
       </model>
       <model name='turtlebot3_house'>
@@ -6601,7 +6601,7 @@
           <pose frame=''>0.883462 -0.576236 0 0 0 -3.14159</pose>
           <scale>1 1 1</scale>
           <link name='link'>
-            <pose frame=''>0.883462 -0.576236 -1e-05 -2e-06 -0 -3.14159</pose>
+            <pose frame=''>0.883462 -0.576236 -1e-05 -3e-06 1e-06 -3.14159</pose>
             <velocity>0 0 0 0 -0 0</velocity>
             <acceleration>0 0 -9.8 0 -0 0</acceleration>
             <wrench>0 0 -9.8 0 -0 0</wrench>
@@ -6691,30 +6691,30 @@
           <pose frame=''>1.88346 1.91193 0 0 -0 0</pose>
           <scale>1 1 1</scale>
           <link name='link'>
-            <pose frame=''>1.88347 1.91193 -4e-06 -1e-06 6e-06 -8.1e-05</pose>
+            <pose frame=''>1.88347 1.9119 -2e-06 6e-06 9e-06 -9.7e-05</pose>
             <velocity>0 0 0 0 -0 0</velocity>
-            <acceleration>-3.03139 -9.20311 16.8591 2.99664 -1.19413 3.14083</acceleration>
-            <wrench>-14.6439 -44.458 81.4423 0 -0 0</wrench>
+            <acceleration>5.79669 -0.831408 4.02746 -0.884176 -0.031135 3.14148</acceleration>
+            <wrench>28.0024 -4.01633 19.4557 0 -0 0</wrench>
           </link>
         </model>
         <model name='first_2015_trash_can_0'>
           <pose frame=''>-4.69354 4.89439 0 0 -0 0</pose>
           <scale>1 1 1</scale>
           <link name='link'>
-            <pose frame=''>-4.69352 4.89439 -3e-06 1e-06 1.4e-05 -6.5e-05</pose>
+            <pose frame=''>-4.69352 4.89439 0 -1.6e-05 2e-05 -9.2e-05</pose>
             <velocity>0 0 0 0 -0 0</velocity>
-            <acceleration>4.79177 -0.686971 1.63035 1.86536 0.444103 0.00015</acceleration>
-            <wrench>23.1479 -3.31859 7.87585 0 -0 0</wrench>
+            <acceleration>-6.73628 -3.11843 8.07818 2.1948 0.559308 0.008907</acceleration>
+            <wrench>-32.5413 -15.0644 39.0237 0 -0 0</wrench>
           </link>
         </model>
         <model name='table'>
           <pose frame=''>-2.65728 2.42376 0 0 -0 0</pose>
           <scale>1 1 1</scale>
           <link name='link'>
-            <pose frame=''>-2.65728 2.42376 -1e-06 0 2e-06 0</pose>
+            <pose frame=''>-2.65728 2.42376 -9e-06 0 -1e-06 0</pose>
             <velocity>0 0 0 0 -0 0</velocity>
-            <acceleration>7e-06 -0 -0.000346 0.11179 0.216085 0</acceleration>
-            <wrench>7e-06 -0 -0.000346 0 -0 0</wrench>
+            <acceleration>0 0 -9.8 0 -0 0</acceleration>
+            <wrench>0 0 -9.8 0 -0 0</wrench>
           </link>
         </model>
         <model name='table_marble'>
@@ -6732,5 +6732,8 @@
         <pose frame=''>0 0 10 0 -0 0</pose>
       </light>
     </state>
+    <audio>
+      <device>default</device>
+    </audio>
   </world>
 </sdf>
