@@ -297,13 +297,13 @@
 
     <link name="zed_left_camera_optical_frame"/>
 
-    <joint name="zed_left_camera_stereo_joint" type="fixed">
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <parent link="zed_left_camera_frame"/>
-        <child link="zed_left_camera_stereo_frame"/>
-    </joint>
+    <joint name="zed_left_camera_depth_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="zed_left_camera_frame"/>
+    <child link="zed_left_camera_depth_link"/>
+  </joint>
 
-    <link name="zed_left_camera_stereo_frame"/>
+  <link name="zed_left_camera_depth_link"></link>
 
 <!-- Right Camera -->
 
@@ -324,7 +324,7 @@
     <link name="zed_right_camera_optical_frame"/>
 
 
-  <gazebo reference="zed_left_camera_stereo_frame">
+  <gazebo reference="zed_left_camera_frame">
     <sensor type="depth" name="depth_camera">
       <update_rate>30.0</update_rate>
       <camera name="depth_camera">
@@ -357,7 +357,7 @@
       <depthImageTopicName>depth/image_raw</depthImageTopicName>
       <depthImageInfoTopicName>depth/camera_info</depthImageInfoTopicName>
       <pointCloudTopicName>depth/points</pointCloudTopicName>
-      <frameName>zed_left_camera_stereo_frame</frameName>
+      <frameName>zed_left_camera_depth_link</frameName>
       <pointCloudCutoff>0.5</pointCloudCutoff>
       <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
       <distortionK1>0.00000001</distortionK1>
