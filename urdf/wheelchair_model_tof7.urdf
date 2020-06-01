@@ -523,8 +523,8 @@
     </transmission>
 
 
-
-  <!--<gazebo> <!--this is the original df driver-->
+<!--this is the original df driver-->
+  <!--<gazebo> 
     <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
       <commandTopic>wheelchair_robot/cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
