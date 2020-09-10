@@ -1,6 +1,5 @@
 <launch>
 
-  <arg name="model" default="$(find wheelchair_description)/urdf/wheelchair_model_tof7.urdf"/>
   <arg name="gui" default="true" />
   <arg name="rvizconfig" default="$(find wheelchair_description)/rviz/urdf.rviz" />
 
