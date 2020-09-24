@@ -546,9 +546,9 @@
       <rosDebugLevel>na</rosDebugLevel>
     </plugin>
   </gazebo>
-  <gazebo>
+  <!--<gazebo> why the hell was this here?
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"></plugin>
-  </gazebo>
+  </gazebo>-->
 
   <gazebo reference="laser">
     <material>Gazebo/FlatBlack</material>
