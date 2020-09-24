@@ -524,7 +524,7 @@
 
 
 <!--this is the original df driver-->
-  <!--<gazebo> 
+  <gazebo> 
     <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
       <commandTopic>wheelchair_robot/cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
@@ -545,7 +545,7 @@
       <wheelTorque>100</wheelTorque>
       <rosDebugLevel>na</rosDebugLevel>
     </plugin>
-  </gazebo>-->
+  </gazebo>
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"></plugin>
   </gazebo>
