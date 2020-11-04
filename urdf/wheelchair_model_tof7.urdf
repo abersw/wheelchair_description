@@ -299,7 +299,7 @@
 
     <joint name="zed_left_camera_depth_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
-    <parent link="zed_left_camera_frame"/>
+    <parent link="zed_left_camera_optical_frame"/>
     <child link="zed_left_camera_depth_link"/>
   </joint>
 
