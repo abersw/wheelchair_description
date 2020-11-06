@@ -347,6 +347,7 @@
           <stddev>0.007</stddev>
         </noise>
       </camera>
+      <!--https://answers.gazebosim.org//question/4266/gazebo-15-libgazebo_openni_kinectso-pointcloud-data-is-rotated-and-flipped/-->
       <plugin name="depth_camera_controller" filename="libgazebo_ros_openni_kinect.so">
       <baseline>0.2</baseline>
       <alwaysOn>true</alwaysOn>
