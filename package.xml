@@ -1,8 +1,8 @@
 <package>
   <name>wheelchair_description</name>
-  <version>0.0.1</version>
+  <version>1.0.0</version>
 
-  <description>This package contains the description of the wheelchair.</description>
+  <description>Version Name: Majestic Maidenhair - This package contains the description of the wheelchair.</description>
   <author email="tof7@aber.ac.uk">Tomos Fearn</author>
 
   <maintainer email="tof7@aber.ac.uk">Tomos Fearn</maintainer>
