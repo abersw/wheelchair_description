@@ -216,7 +216,7 @@
       <geometry>
         <mesh filename="package://wheelchair_description/meshes/rplidar-a2m4-r1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material name="dark"/>
+      <material name=""/>
     </visual>
 
     <collision>
