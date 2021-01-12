@@ -351,7 +351,7 @@
       <plugin name="depth_camera_controller" filename="libgazebo_ros_openni_kinect.so">
       <baseline>0.2</baseline>
       <alwaysOn>true</alwaysOn>
-      <updateRate>1.0</updateRate>
+      <updateRate>30.0</updateRate>
       <cameraName>wheelchair_robot/depth_camera</cameraName>
       <imageTopicName>color/image_raw</imageTopicName>
       <cameraInfoTopicName>color/camera_info</cameraInfoTopicName>
