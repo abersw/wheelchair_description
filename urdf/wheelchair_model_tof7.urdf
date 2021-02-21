@@ -360,7 +360,7 @@
       <pointCloudTopicName>depth/points</pointCloudTopicName>
       <frameName>zed_left_camera_depth_link</frameName>
       <pointCloudCutoff>0.5</pointCloudCutoff>
-      <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
+      <pointCloudCutoffMax>10.0</pointCloudCutoffMax>
       <distortionK1>0.00000001</distortionK1>
       <distortionK2>0.00000001</distortionK2>
       <distortionK3>0.00000001</distortionK3>
