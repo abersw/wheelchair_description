@@ -11,7 +11,6 @@
         <pose>-4.4965503 -0.4874 1.508684 0 -0 0</pose>
       </camera>
     </gui>
-    <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type='adiabatic'/>
     <physics name='default_physics' default='0' type='ode'>
